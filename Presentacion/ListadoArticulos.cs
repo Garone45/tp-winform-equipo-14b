@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    public partial class VentanaPrincipal : Form
+    public partial class ListadoArticulos : Form
     {
-        public VentanaPrincipal()
+        public ListadoArticulos()
         {
             InitializeComponent();
-        }
-
-        private void listadoDeArticulosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form ventana = new Form();
-            ventana.Show();
         }
     }
 }
