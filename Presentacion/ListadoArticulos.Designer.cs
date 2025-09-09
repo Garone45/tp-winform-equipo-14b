@@ -39,7 +39,11 @@
             this.dvgArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvgArticulos.Location = new System.Drawing.Point(30, 62);
             this.dvgArticulos.Name = "dvgArticulos";
+<<<<<<< HEAD
             this.dvgArticulos.Size = new System.Drawing.Size(515, 158);
+=======
+            this.dvgArticulos.Size = new System.Drawing.Size(818, 376);
+>>>>>>> f0565038410d7eb892a35ee6043ee179ade8f14e
             this.dvgArticulos.TabIndex = 0;
             // 
             // textTituloArticulos
@@ -50,15 +54,25 @@
             this.textTituloArticulos.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textTituloArticulos.Location = new System.Drawing.Point(30, 39);
             this.textTituloArticulos.Name = "textTituloArticulos";
+<<<<<<< HEAD
             this.textTituloArticulos.Size = new System.Drawing.Size(515, 27);
+=======
+            this.textTituloArticulos.Size = new System.Drawing.Size(114, 27);
+>>>>>>> f0565038410d7eb892a35ee6043ee179ade8f14e
             this.textTituloArticulos.TabIndex = 1;
             this.textTituloArticulos.Text = "Listado articulos";
             // 
             // ListadoArticulos
             // 
+<<<<<<< HEAD
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(984, 1061);
+=======
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1275, 653);
+>>>>>>> f0565038410d7eb892a35ee6043ee179ade8f14e
             this.Controls.Add(this.textTituloArticulos);
             this.Controls.Add(this.dvgArticulos);
             this.Name = "ListadoArticulos";
