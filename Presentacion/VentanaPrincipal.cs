@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
+
 
 namespace Presentacion
 {
@@ -25,9 +28,10 @@ namespace Presentacion
                     return;
             }
             
-            Form ventana = new Form();
+            ListadoArticulos ventana = new ListadoArticulos();
             ventana.MdiParent = this;
             ventana.Show();
+          
         }
 
        

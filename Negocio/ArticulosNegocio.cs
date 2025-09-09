@@ -32,9 +32,12 @@ namespace Negocio
                     Articulos aux = new Articulos();
                     //aux.Nombre = lector.GetString(1);
                     aux.IDArticulo = (int)lector["Id"];
-                    aux.Nombre = (string)lector["Numero"];
+                    aux.Nombre = (string)lector["Nombre"];
                     aux.CodigoArticulo = (string)lector["Codigo"];
-                    aux.Descripcion = (string)lector["Descripcion"];               
+                    aux.Descripcion = (string)lector["Descripcion"];
+                    aux.Precio = (decimal)lector["Precio"];
+                    
+                    lista.Add(aux);
                 }
 
                 conexion.Close();
