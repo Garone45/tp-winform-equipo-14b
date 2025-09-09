@@ -21,11 +21,11 @@ namespace Presentacion
         {
             foreach (var item in Application.OpenForms)
             {
-                if (item.GetType() == typeof(Form))
+                if (item.GetType() == typeof(ListadoArticulos))
                     return;
             }
             
-            Form ventana = new Form();
+            ListadoArticulos ventana = new ListadoArticulos();
             ventana.MdiParent = this;
             ventana.Show();
         }

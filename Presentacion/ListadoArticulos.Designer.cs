@@ -38,7 +38,7 @@
             this.dvgArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvgArticulos.Location = new System.Drawing.Point(30, 65);
             this.dvgArticulos.Name = "dvgArticulos";
-            this.dvgArticulos.Size = new System.Drawing.Size(237, 406);
+            this.dvgArticulos.Size = new System.Drawing.Size(818, 376);
             this.dvgArticulos.TabIndex = 0;
             // 
             // textTituloArticulos
@@ -49,7 +49,7 @@
             this.textTituloArticulos.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textTituloArticulos.Location = new System.Drawing.Point(30, 39);
             this.textTituloArticulos.Name = "textTituloArticulos";
-            this.textTituloArticulos.Size = new System.Drawing.Size(237, 27);
+            this.textTituloArticulos.Size = new System.Drawing.Size(114, 27);
             this.textTituloArticulos.TabIndex = 1;
             this.textTituloArticulos.Text = "Listado articulos";
             // 
@@ -57,7 +57,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(488, 634);
+            this.ClientSize = new System.Drawing.Size(1275, 653);
             this.Controls.Add(this.textTituloArticulos);
             this.Controls.Add(this.dvgArticulos);
             this.Name = "ListadoArticulos";

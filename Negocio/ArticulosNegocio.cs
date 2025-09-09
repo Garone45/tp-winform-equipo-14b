@@ -22,7 +22,7 @@ namespace Negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database = CATALOGO_P3_DB; integrated security=true ";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "Select Id, Codigo, Nombre, Descripcion, Precio From Articulos";
+                comando.CommandText = "Select Id, Codigo, Nombre, Descripcion,IdMarca, IdCategoria, Precio From Articulos";
                 comando.Connection = conexion;
                 conexion.Open();
                 lector=comando.ExecuteReader();
@@ -32,9 +32,13 @@ namespace Negocio
                     Articulos aux = new Articulos();
                     //aux.Nombre = lector.GetString(1);
                     aux.IDArticulo = (int)lector["Id"];
-                    aux.Nombre = (string)lector["Numero"];
+                    aux.Nombre = (string)lector["Nombre"];
                     aux.CodigoArticulo = (string)lector["Codigo"];
-                    aux.Descripcion = (string)lector["Descripcion"];               
+                    aux.Descripcion = (string)lector["Descripcion"];
+                    aux.Marca = (Marcas)lector["IdMarca"];
+                    aux.Categoria = (Categoria)lector["IdCategoria"];
+                    
+                    lista.Add(aux);
                 }
 
                 conexion.Close();
