@@ -19,7 +19,14 @@ namespace Presentacion
 
         private void listadoDeArticulosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            foreach (var item in Application.OpenForms)
+            {
+                if (item.GetType() == typeof(Form))
+                    return;
+            }
+            
             Form ventana = new Form();
+            ventana.MdiParent = this;
             ventana.Show();
         }
     }

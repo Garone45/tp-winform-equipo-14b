@@ -189,6 +189,7 @@
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.Name = "VentanaPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
