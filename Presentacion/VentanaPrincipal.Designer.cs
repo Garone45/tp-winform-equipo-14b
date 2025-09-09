@@ -37,13 +37,13 @@
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verDetalleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.marcasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.verMarcasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.verCategoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verMarcasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
@@ -123,6 +123,24 @@
             this.marcasToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.marcasToolStripMenuItem.Text = "Marcas";
             // 
+            // agregarToolStripMenuItem1
+            // 
+            this.agregarToolStripMenuItem1.Name = "agregarToolStripMenuItem1";
+            this.agregarToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
+            this.agregarToolStripMenuItem1.Text = "Agregar";
+            // 
+            // modificarToolStripMenuItem1
+            // 
+            this.modificarToolStripMenuItem1.Name = "modificarToolStripMenuItem1";
+            this.modificarToolStripMenuItem1.Size = new System.Drawing.Size(131, 22);
+            this.modificarToolStripMenuItem1.Text = "Modificar";
+            // 
+            // verMarcasToolStripMenuItem
+            // 
+            this.verMarcasToolStripMenuItem.Name = "verMarcasToolStripMenuItem";
+            this.verMarcasToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.verMarcasToolStripMenuItem.Text = "Ver Marcas";
+            // 
             // categoriasToolStripMenuItem
             // 
             this.categoriasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -133,41 +151,23 @@
             this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.categoriasToolStripMenuItem.Text = "Categorias";
             // 
-            // agregarToolStripMenuItem1
-            // 
-            this.agregarToolStripMenuItem1.Name = "agregarToolStripMenuItem1";
-            this.agregarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.agregarToolStripMenuItem1.Text = "Agregar";
-            // 
-            // modificarToolStripMenuItem1
-            // 
-            this.modificarToolStripMenuItem1.Name = "modificarToolStripMenuItem1";
-            this.modificarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.modificarToolStripMenuItem1.Text = "Modificar";
-            // 
             // agregarToolStripMenuItem2
             // 
             this.agregarToolStripMenuItem2.Name = "agregarToolStripMenuItem2";
-            this.agregarToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.agregarToolStripMenuItem2.Size = new System.Drawing.Size(149, 22);
             this.agregarToolStripMenuItem2.Text = "Agregar";
             // 
             // modificarToolStripMenuItem2
             // 
             this.modificarToolStripMenuItem2.Name = "modificarToolStripMenuItem2";
-            this.modificarToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.modificarToolStripMenuItem2.Size = new System.Drawing.Size(149, 22);
             this.modificarToolStripMenuItem2.Text = "Modificar";
             // 
             // verCategoriasToolStripMenuItem
             // 
             this.verCategoriasToolStripMenuItem.Name = "verCategoriasToolStripMenuItem";
-            this.verCategoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.verCategoriasToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.verCategoriasToolStripMenuItem.Text = "Ver Categorias";
-            // 
-            // verMarcasToolStripMenuItem
-            // 
-            this.verMarcasToolStripMenuItem.Name = "verMarcasToolStripMenuItem";
-            this.verMarcasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.verMarcasToolStripMenuItem.Text = "Ver Marcas";
             // 
             // opcionesToolStripMenuItem
             // 
@@ -191,6 +191,7 @@
             this.Name = "VentanaPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Principal";
+   
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

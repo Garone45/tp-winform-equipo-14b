@@ -29,5 +29,7 @@ namespace Presentacion
             ventana.MdiParent = this;
             ventana.Show();
         }
+
+       
     }
 }
