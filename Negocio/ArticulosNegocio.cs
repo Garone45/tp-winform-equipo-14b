@@ -13,21 +13,21 @@ namespace Negocio
     {
         public List<Articulos> listar()
         {
-            List<Articulos> lista = new List <Articulos>();
+            List<Articulos> lista = new List<Articulos>();
             SqlConnection conexion = new SqlConnection();
             SqlCommand comando = new SqlCommand();
-            SqlDataReader lector; 
+            SqlDataReader lector;
 
-            try 
+            try
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database = CATALOGO_P3_DB; integrated security=true ";
                 comando.CommandType = System.Data.CommandType.Text;
                 comando.CommandText = "Select Id, Codigo, Nombre, Descripcion,IdMarca, IdCategoria, Precio From Articulos";
                 comando.Connection = conexion;
                 conexion.Open();
-                lector=comando.ExecuteReader();
+                lector = comando.ExecuteReader();
 
-                while(lector.Read()) 
+                while (lector.Read())
                 {
                     Articulos aux = new Articulos();
                     //aux.Nombre = lector.GetString(1);
@@ -35,24 +35,53 @@ namespace Negocio
                     aux.Nombre = (string)lector["Nombre"];
                     aux.CodigoArticulo = (string)lector["Codigo"];
                     aux.Descripcion = (string)lector["Descripcion"];
-<<<<<<< HEAD
-                    aux.Precio = (decimal)lector["Precio"];
-=======
-                    aux.Marca = (Marcas)lector["IdMarca"];
-                    aux.Categoria = (Categoria)lector["IdCategoria"];
->>>>>>> f0565038410d7eb892a35ee6043ee179ade8f14e
-                    
+
+                    // aux.Precio = (decimal)lector["Precio"];
+
+                    //aux.Marca = (Marcas)lector["IdMarca"];
+                    //aux.Categoria = (Categoria)lector["IdCategoria"];
+
+
                     lista.Add(aux);
                 }
 
                 conexion.Close();
                 return lista;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                throw ex;            
+                throw ex;
             }
 
+        }
+
+        public void agregar(Articulos articulos)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                ///revisar
+                //datos.setearConsulta("insert into Articulos (Nombre,Codigo,Descripcion,) values (" + articulos.Nombre + ",'" + ",'" + articulos.CodigoArticulo + ",'" + articulos.Descripcion);
+                //datos.cerrarConexion();
+
+                datos.setearConsulta("INSERT INTO Articulos (Nombre, Codigo, Descripcion) VALUES (@nombre, @codigo, @descripcion)"); //creacion de "variable" para setear con el nuevo valor articulos.
+
+                datos.setearParametro("@nombre", articulos.Nombre);
+                datos.setearParametro("@codigo", articulos.CodigoArticulo);
+                datos.setearParametro("@descripcion", articulos.Descripcion);
+
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
     }
 }

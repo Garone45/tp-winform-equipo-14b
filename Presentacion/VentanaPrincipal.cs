@@ -34,6 +34,11 @@ namespace Presentacion
           
         }
 
-       
+        private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AgregarArticulo ventana = new AgregarArticulo();
+            ventana.MdiParent = this;
+            ventana.Show(); 
+        }
     }
 }
