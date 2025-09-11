@@ -30,16 +30,19 @@ namespace Negocio
                 while (lector.Read())
                 {
                     Articulos aux = new Articulos();
+                    aux.Marca = new Marcas();
+                    aux.Categoria = new Categoria();
+
                     aux.IDArticulo = (int)lector["Id"];
                     aux.Nombre = (string)lector["Nombre"];
                     aux.CodigoArticulo = (string)lector["Codigo"];
                     aux.Descripcion = (string)lector["Descripcion"];
-                    aux.Marca = new Marcas();
+                    if (!(lector["Marca"] is DBNull))
                     aux.Marca.Descripcion = (string)lector ["Marca"];
-                    aux.Categoria = new Categoria();
+                    if (!(lector["Categoria"] is DBNull))
                     aux.Categoria.Descripcion = (string)lector["Categoria"];
-                    aux.Precio = (decimal)lector["Precio"];
-
+                    if (!(lector["Precio"] is DBNull))
+                    aux.Precio = Convert.ToDecimal(lector["Precio"]);
 
 
                     lista.Add(aux);
