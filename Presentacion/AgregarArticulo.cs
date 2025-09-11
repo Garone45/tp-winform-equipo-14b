@@ -34,21 +34,43 @@ namespace Presentacion
                 articulos.CodigoArticulo = txtCodigoArticulo.Text;              //capturamos lo que se agrega en el textBox 
                 articulos.Nombre = txtNombre.Text;
                 articulos.Descripcion = txtDescripcion.Text;
+                articulos.Marca =(Marcas) cboMarca.SelectedItem; //el selected item lo casteamos como marca
+                articulos.Categoria = (Categoria)cboCategoria.SelectedItem ; //el selected item lo casteamos como categoria
 
                 negocio.agregar(articulos);
+                
+                
                 MessageBox.Show("Agregado Correctamente");
+                
+                
                 Close();//volvemos a la ventana principal...
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-                            
-            
+
+
             }
 
 
 
+        }
+
+        private void AgregarArticulo_Load(object sender, EventArgs e)
+        {
+            MarcasNegocio marcasNegocio = new MarcasNegocio();
+            CategoriasNegocio CategoriasNegocio = new CategoriasNegocio();
+            try
+            {
+                cboMarca.DataSource = marcasNegocio.listar();
+                cboCategoria.DataSource = CategoriasNegocio.listar();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

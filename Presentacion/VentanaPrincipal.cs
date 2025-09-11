@@ -22,11 +22,11 @@ namespace Presentacion
 
         private void listadoDeArticulosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (var item in Application.OpenForms)
+           /* foreach (var item in Application.OpenForms)
             {
                 if (item.GetType() == typeof(ListadoArticulos))
                     return;
-            }
+            }*/
             
             ListadoArticulos ventana = new ListadoArticulos();
             ventana.MdiParent = this;
@@ -36,9 +36,28 @@ namespace Presentacion
 
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            foreach (var item in Application.OpenForms)
+            {
+                if (item.GetType() == typeof(AgregarArticulo))
+                    return;
+            }
             AgregarArticulo ventana = new AgregarArticulo();
             ventana.MdiParent = this;
             ventana.Show(); 
+        }
+
+        private void agregarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+            /*foreach (var item in Application.OpenForms)
+            {
+                if (item.GetType() == typeof(ListadoMarcas))
+                    return;
+            }*/
+
+            ListadoMarcas ventana = new ListadoMarcas();
+            ventana.MdiParent = this;
+            ventana.Show();
         }
     }
 }

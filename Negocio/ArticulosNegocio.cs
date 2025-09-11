@@ -22,7 +22,7 @@ namespace Negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database = CATALOGO_P3_DB; integrated security=true ";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "Select Id, Codigo, Nombre, Descripcion,IdMarca, IdCategoria, Precio From Articulos";
+                comando.CommandText = "Select A.Id, Codigo, Nombre, A.Descripcion,M.Descripcion Marca,C.Descripcion Categoria, Precio From Articulos A, Marcas M, CATEGORIAS C where M.id = A.idMarca and C.id = A.idCategoria";
                 comando.Connection = conexion;
                 conexion.Open();
                 lector = comando.ExecuteReader();
@@ -30,16 +30,16 @@ namespace Negocio
                 while (lector.Read())
                 {
                     Articulos aux = new Articulos();
-                    //aux.Nombre = lector.GetString(1);
                     aux.IDArticulo = (int)lector["Id"];
                     aux.Nombre = (string)lector["Nombre"];
                     aux.CodigoArticulo = (string)lector["Codigo"];
                     aux.Descripcion = (string)lector["Descripcion"];
+                    aux.Marca = new Marcas();
+                    aux.Marca.Descripcion = (string)lector ["Marca"];
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.Descripcion = (string)lector["Categoria"];
+                    aux.Precio = (decimal)lector["Precio"];
 
-                    // aux.Precio = (decimal)lector["Precio"];
-
-                    //aux.Marca = (Marcas)lector["IdMarca"];
-                    //aux.Categoria = (Categoria)lector["IdCategoria"];
 
 
                     lista.Add(aux);
@@ -65,11 +65,14 @@ namespace Negocio
                 //datos.setearConsulta("insert into Articulos (Nombre,Codigo,Descripcion,) values (" + articulos.Nombre + ",'" + ",'" + articulos.CodigoArticulo + ",'" + articulos.Descripcion);
                 //datos.cerrarConexion();
 
-                datos.setearConsulta("INSERT INTO Articulos (Nombre, Codigo, Descripcion) VALUES (@nombre, @codigo, @descripcion)"); //creacion de "variable" para setear con el nuevo valor articulos.
+                datos.setearConsulta("INSERT INTO Articulos (Nombre, Codigo, Descripcion,IdMarca,IdCategoria) VALUES (@nombre, @codigo, @descripcion,@idTipo, @idDebilidad)"); //creacion de "variable" para setear con el nuevo valor articulos.
 
                 datos.setearParametro("@nombre", articulos.Nombre);
                 datos.setearParametro("@codigo", articulos.CodigoArticulo);
                 datos.setearParametro("@descripcion", articulos.Descripcion);
+                datos.setearParametro("@idTipo", articulos.Marca.IDMarca);
+                datos.setearParametro("@idDebilidad", articulos.Categoria.IDCategoria);
+
 
                 datos.ejecutarAccion();
 

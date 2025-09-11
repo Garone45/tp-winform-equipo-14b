@@ -11,25 +11,21 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    public partial class ListadoArticulos : Form
+    public partial class ListadoMarcas : Form
     {
-        public ListadoArticulos()
+        public ListadoMarcas()
         {
             InitializeComponent();
         }
 
-        private void ListadoArticulos_Load(object sender, EventArgs e)
+        private void ListadoMarcas_Load(object sender, EventArgs e)
         {
-
             //this.FormBorderStyle = FormBorderStyle.None; // sin bordes
-           // this.Dock = DockStyle.Fill; // ocupa todo el contenedor padre
+            //this.Dock = DockStyle.Fill; // ocupa todo el contenedor padre
 
-          
-            ArticulosNegocio negocio = new ArticulosNegocio();
-            dvgArticulos.DataSource = negocio.listar();
 
+            MarcasNegocio negocio = new MarcasNegocio();
+            dgvListadoMarcas.DataSource = negocio.listar();
         }
-
-       
     }
 }

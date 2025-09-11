@@ -18,7 +18,7 @@ namespace Negocio
             try 
             {
 
-                datos.setearConsulta("select id Descripcion from CATEGORIAS");// Lo mismo que en articuloNegocio pero trabajado con la clase AccesoDatos.
+                datos.setearConsulta("select id, Descripcion from CATEGORIAS");// Lo mismo que en articuloNegocio pero trabajado con la clase AccesoDatos.
                 datos.ejecutarLectura();
 
                 while(datos.Lector.Read())

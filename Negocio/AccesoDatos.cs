@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Net.Configuration;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace Negocio
 {
@@ -16,7 +17,7 @@ namespace Negocio
 
         public SqlDataReader Lector // De este modo leemos el lector desde afuera.
         {
-            get { return Lector; }
+            get { return lector; }
         }
 
         public AccesoDatos() //Constructor
