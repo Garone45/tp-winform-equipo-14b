@@ -22,7 +22,7 @@ namespace Negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database = CATALOGO_P3_DB; integrated security=true ";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "Select A.Id, Codigo, Nombre, A.Descripcion,M.Descripcion Marca,C.Descripcion Categoria, Precio From Articulos A, Marcas M, CATEGORIAS C where M.id = A.idMarca and C.id = A.idCategoria";
+                comando.CommandText = "Select A.Id, Codigo, Nombre, A.Descripcion,M.Descripcion Marca,C.Descripcion Categoria,A.IdMarca,A.IdCategoria,A.Id Precio From Articulos A, Marcas M, CATEGORIAS C where M.id = A.idMarca and C.id = A.idCategoria";
                 comando.Connection = conexion;
                 conexion.Open();
                 lector = comando.ExecuteReader();
@@ -30,13 +30,17 @@ namespace Negocio
                 while (lector.Read())
                 {
                     Articulos aux = new Articulos();
+                    aux.IDArticulo = (int)lector["Id"];
                     aux.Marca = new Marcas();
+                    aux.Marca.IDMarca = (int)lector["IdMarca"];
                     aux.Categoria = new Categoria();
+                    aux.Categoria.IDCategoria = (int)lector["IdCategoria"];
 
                     aux.IDArticulo = (int)lector["Id"];
                     aux.Nombre = (string)lector["Nombre"];
                     aux.CodigoArticulo = (string)lector["Codigo"];
                     aux.Descripcion = (string)lector["Descripcion"];
+
                     if (!(lector["Marca"] is DBNull))
                     aux.Marca.Descripcion = (string)lector ["Marca"];
                     if (!(lector["Categoria"] is DBNull))
@@ -89,5 +93,30 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+           
+        public void modificar(Articulos articulos)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("update Articulos set Nombre = @nombre, Codigo = @codigo, Descripcion = @descripcion, IdMarca = @idTipo, IdCategoria = @idDebilidad where Id = @id");
+                datos.setearParametro("@nombre", articulos.Nombre);
+                datos.setearParametro("@codigo", articulos.CodigoArticulo);
+                datos.setearParametro("@descripcion", articulos.Descripcion);
+                datos.setearParametro("@idTipo", articulos.Marca.IDMarca);
+                datos.setearParametro("@idDebilidad", articulos.Categoria.IDCategoria);
+                datos.setearParametro("@id", articulos.IDArticulo);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }
