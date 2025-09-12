@@ -32,6 +32,8 @@
             this.textTituloArticulos = new System.Windows.Forms.TextBox();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
+            this.btnEliminarFisica = new System.Windows.Forms.Button();
+            this.btnAtras = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dvgArticulos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,12 +81,34 @@
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
+            // btnEliminarFisica
+            // 
+            this.btnEliminarFisica.Location = new System.Drawing.Point(213, 414);
+            this.btnEliminarFisica.Name = "btnEliminarFisica";
+            this.btnEliminarFisica.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminarFisica.TabIndex = 4;
+            this.btnEliminarFisica.Text = "Eliminar";
+            this.btnEliminarFisica.UseVisualStyleBackColor = true;
+            this.btnEliminarFisica.Click += new System.EventHandler(this.Eliminar_Click);
+            // 
+            // btnAtras
+            // 
+            this.btnAtras.Location = new System.Drawing.Point(306, 414);
+            this.btnAtras.Name = "btnAtras";
+            this.btnAtras.Size = new System.Drawing.Size(75, 23);
+            this.btnAtras.TabIndex = 5;
+            this.btnAtras.Text = "Atras";
+            this.btnAtras.UseVisualStyleBackColor = true;
+            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
+            // 
             // ListadoArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1275, 653);
+            this.Controls.Add(this.btnAtras);
+            this.Controls.Add(this.btnEliminarFisica);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.textTituloArticulos);
@@ -106,5 +130,7 @@
         private System.Windows.Forms.TextBox textTituloArticulos;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnEliminarFisica;
+        private System.Windows.Forms.Button btnAtras;
     }
 }

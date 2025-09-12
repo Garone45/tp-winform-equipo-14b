@@ -61,5 +61,35 @@ namespace Presentacion
             AgregarArticulo ventanaModificar = new AgregarArticulo(seleccionado);
             ventanaModificar.ShowDialog();
         }
+
+        private void Eliminar_Click(object sender, EventArgs e)
+        {
+                ArticulosNegocio negocio = new ArticulosNegocio();
+                Articulos seleccionado;
+            try
+            {
+                //Opciones de si o no, se guarda respuesta en el dialogResult
+                DialogResult respuesta = MessageBox.Show("Desea eliminar un articulo?","Eliminando..",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                
+                if(respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Articulos)dvgArticulos.CurrentRow.DataBoundItem;
+                    negocio.eliminar(seleccionado.IDArticulo);
+                    MessageBox.Show("Eliminado Correctamente!");
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
