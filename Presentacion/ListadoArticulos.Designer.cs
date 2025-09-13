@@ -35,11 +35,11 @@
             this.btnEliminarFisica = new System.Windows.Forms.Button();
             this.btnAtras = new System.Windows.Forms.Button();
             this.lblFiltroRapido = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbxArticulos = new System.Windows.Forms.PictureBox();
             this.txtFiltroRapido = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dvgArticulos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulos)).BeginInit();
             this.SuspendLayout();
             // 
             // dvgArticulos
@@ -52,6 +52,8 @@
             this.dvgArticulos.Name = "dvgArticulos";
             this.dvgArticulos.Size = new System.Drawing.Size(594, 330);
             this.dvgArticulos.TabIndex = 0;
+  
+            this.dvgArticulos.SelectionChanged += new System.EventHandler(this.btnActualizar_Click);
             // 
             // textTituloArticulos
             // 
@@ -115,13 +117,14 @@
             this.lblFiltroRapido.TabIndex = 6;
             this.lblFiltroRapido.Text = "Filtro rapido:";
             // 
-            // pictureBox1
+            // pbxArticulos
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(662, 62);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(210, 330);
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
+            this.pbxArticulos.Location = new System.Drawing.Point(662, 62);
+            this.pbxArticulos.Name = "pbxArticulos";
+            this.pbxArticulos.Size = new System.Drawing.Size(267, 330);
+            this.pbxArticulos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxArticulos.TabIndex = 7;
+            this.pbxArticulos.TabStop = false;
             // 
             // txtFiltroRapido
             // 
@@ -146,10 +149,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(918, 629);
+            this.ClientSize = new System.Drawing.Size(952, 629);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtFiltroRapido);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbxArticulos);
             this.Controls.Add(this.lblFiltroRapido);
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.btnEliminarFisica);
@@ -163,7 +166,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ListadoArticulos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dvgArticulos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,7 +181,7 @@
         private System.Windows.Forms.Button btnEliminarFisica;
         private System.Windows.Forms.Button btnAtras;
         private System.Windows.Forms.Label lblFiltroRapido;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbxArticulos;
         private System.Windows.Forms.TextBox txtFiltroRapido;
         private System.Windows.Forms.Button btnAgregar;
     }

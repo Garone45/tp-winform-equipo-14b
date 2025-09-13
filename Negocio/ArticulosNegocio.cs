@@ -23,7 +23,7 @@ namespace Negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database = CATALOGO_P3_DB; integrated security=true ";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "Select A.Id, Codigo, Nombre, A.Descripcion,M.Descripcion Marca,C.Descripcion Categoria,A.IdMarca,A.IdCategoria,A.Id, Precio From Articulos A, Marcas M, CATEGORIAS C where M.id = A.idMarca and C.id = A.idCategoria";
+                comando.CommandText = "SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria,A.IdMarca, A.IdCategoria, A.Id, Precio, I.ImagenUrl FROM Articulos A, Marcas M, Categorias C, Imagenes I WHERE M.Id = A.IdMarca AND C.Id = A.IdCategoria AND I.IdArticulo = I.Id";//"Select A.Id, Codigo, Nombre, A.Descripcion,M.Descripcion Marca,C.Descripcion Categoria,A.IdMarca,A.IdCategoria,A.Id, Precio From Articulos A, Marcas M, CATEGORIAS C where M.id = A.idMarca and C.id = A.idCategoria";
                 comando.Connection = conexion;
                 conexion.Open();
                 lector = comando.ExecuteReader();
@@ -41,6 +41,7 @@ namespace Negocio
                     aux.Nombre = (string)lector["Nombre"];
                     aux.CodigoArticulo = (string)lector["Codigo"];
                     aux.Descripcion = (string)lector["Descripcion"];
+                   // aux.UrlImagen = (string)lector["ImagenUrl"];
 
                     if (!(lector["Marca"] is DBNull))
                     aux.Marca.Descripcion = (string)lector ["Marca"];
@@ -48,6 +49,12 @@ namespace Negocio
                     aux.Categoria.Descripcion = (string)lector["Categoria"];
                     if (!(lector["Precio"] is DBNull))
                     aux.Precio = Convert.ToDecimal(lector["Precio"]);
+
+                    aux.Imagen = new Imagen();
+                    if (!(lector["ImagenUrl"] is DBNull))
+                        aux.Imagen.UrlImagen = (string)lector["ImagenUrl"];
+                    else
+                        aux.Imagen = null;
 
 
                     lista.Add(aux);

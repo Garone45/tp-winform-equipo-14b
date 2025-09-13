@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
+using System.Security.Policy;
 
 
 namespace Presentacion
@@ -16,7 +17,6 @@ namespace Presentacion
    
     public partial class ListadoArticulos : Form
     {
-        
         private List<Articulos> listaArticulos;
         
         public ListadoArticulos()
@@ -31,13 +31,13 @@ namespace Presentacion
             ArticulosNegocio negocio = new ArticulosNegocio();
             try
             {
-                dvgArticulos.DataSource = negocio.listar();
+                listaArticulos = negocio.listar();
+                dvgArticulos.DataSource = listaArticulos;
+                pbxArticulos.Load(listaArticulos[0].Imagen.UrlImagen);
                 
-
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
 
@@ -48,9 +48,9 @@ namespace Presentacion
             ArticulosNegocio negocio = new ArticulosNegocio();
             try
             {
-                dvgArticulos.DataSource = negocio.listar();
-               // dvgArticulos.Columns["Id"].Visible = false;
-
+                listaArticulos = negocio.listar();
+                dvgArticulos.DataSource = listaArticulos;
+                //dvgArticulos.Columns["ImagenUrl"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -126,5 +126,11 @@ namespace Presentacion
             AgregarArticulo ventana = new AgregarArticulo();
             ventana.ShowDialog();
         }
+
+       /* private void dvgArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e) // Va cambiando de foto
+        {
+            Articulos seleccionado = (Articulos)dvgArticulos.CurrentRow.DataBoundItem;
+            pbxArticulos.Load(seleccionado.Imagen.UrlImagen);
+        }*/
     }
 }
