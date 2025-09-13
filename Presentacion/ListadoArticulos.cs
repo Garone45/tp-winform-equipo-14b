@@ -13,12 +13,17 @@ using Dominio;
 
 namespace Presentacion
 {
+   
     public partial class ListadoArticulos : Form
     {
+        
+        private List<Articulos> listaArticulos;
+        
         public ListadoArticulos()
         {
             InitializeComponent();
         }
+
 
         private void ListadoArticulos_Load(object sender, EventArgs e)
         {
@@ -27,6 +32,7 @@ namespace Presentacion
             try
             {
                 dvgArticulos.DataSource = negocio.listar();
+                
 
             }
             catch (Exception ex)
@@ -90,6 +96,35 @@ namespace Presentacion
         private void btnAtras_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void txtFiltroRapido_TextChanged(object sender, EventArgs e)
+        {
+            List<Articulos> listaFiltrada;
+            ArticulosNegocio negocio = new ArticulosNegocio();
+            this.listaArticulos = negocio.listar(); 
+
+            string filtro = txtFiltroRapido.Text;
+                
+            if(filtro != "")
+            {
+                listaFiltrada = listaArticulos.FindAll(buscar => buscar.Nombre.ToUpper().Contains(filtro.ToUpper()));
+            }
+            else
+            {
+                listaFiltrada = listaArticulos;
+            }
+
+            
+
+            dvgArticulos.DataSource = null;
+            dvgArticulos.DataSource = listaFiltrada;
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            AgregarArticulo ventana = new AgregarArticulo();
+            ventana.ShowDialog();
         }
     }
 }

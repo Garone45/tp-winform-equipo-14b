@@ -56,7 +56,7 @@
             this.txtCodigoArticulo.Location = new System.Drawing.Point(193, 81);
             this.txtCodigoArticulo.Name = "txtCodigoArticulo";
             this.txtCodigoArticulo.Size = new System.Drawing.Size(178, 20);
-            this.txtCodigoArticulo.TabIndex = 1;
+            this.txtCodigoArticulo.TabIndex = 2;
             // 
             // lblDescripcion
             // 
@@ -79,7 +79,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(193, 258);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 4;
+            this.btnAgregar.TabIndex = 6;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -135,7 +135,7 @@
             this.cboMarca.Location = new System.Drawing.Point(193, 151);
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(178, 21);
-            this.cboMarca.TabIndex = 10;
+            this.cboMarca.TabIndex = 4;
             // 
             // cboCategoria
             // 
@@ -144,7 +144,7 @@
             this.cboCategoria.Location = new System.Drawing.Point(193, 189);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(178, 21);
-            this.cboCategoria.TabIndex = 11;
+            this.cboCategoria.TabIndex = 5;
             // 
             // AgregarArticulo
             // 

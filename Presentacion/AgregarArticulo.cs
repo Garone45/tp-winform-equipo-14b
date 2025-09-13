@@ -47,7 +47,7 @@ namespace Presentacion
                 articulos.Marca =(Marcas) cboMarca.SelectedItem; //el selected item lo casteamos como marca
                 articulos.Categoria = (Categoria)cboCategoria.SelectedItem ; //el selected item lo casteamos como categoria
 
-                if(articulo.IDArticulo != 0)
+                if(articulos.IDArticulo != 0)
                 {
                     articulos.IDArticulo = articulo.IDArticulo;
                     negocio.modificar(articulos);

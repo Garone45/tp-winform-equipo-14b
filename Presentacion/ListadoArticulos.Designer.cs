@@ -34,7 +34,12 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminarFisica = new System.Windows.Forms.Button();
             this.btnAtras = new System.Windows.Forms.Button();
+            this.lblFiltroRapido = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtFiltroRapido = new System.Windows.Forms.TextBox();
+            this.btnAgregar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dvgArticulos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dvgArticulos
@@ -45,7 +50,7 @@
             this.dvgArticulos.Location = new System.Drawing.Point(30, 62);
             this.dvgArticulos.MultiSelect = false;
             this.dvgArticulos.Name = "dvgArticulos";
-            this.dvgArticulos.Size = new System.Drawing.Size(729, 330);
+            this.dvgArticulos.Size = new System.Drawing.Size(594, 330);
             this.dvgArticulos.TabIndex = 0;
             // 
             // textTituloArticulos
@@ -57,13 +62,13 @@
             this.textTituloArticulos.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textTituloArticulos.Location = new System.Drawing.Point(30, 36);
             this.textTituloArticulos.Name = "textTituloArticulos";
-            this.textTituloArticulos.Size = new System.Drawing.Size(729, 20);
+            this.textTituloArticulos.Size = new System.Drawing.Size(75, 20);
             this.textTituloArticulos.TabIndex = 1;
             this.textTituloArticulos.Text = "ARTICULOS";
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(30, 414);
+            this.btnActualizar.Location = new System.Drawing.Point(549, 407);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(75, 23);
             this.btnActualizar.TabIndex = 2;
@@ -73,7 +78,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(121, 414);
+            this.btnModificar.Location = new System.Drawing.Point(120, 407);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 3;
@@ -83,7 +88,7 @@
             // 
             // btnEliminarFisica
             // 
-            this.btnEliminarFisica.Location = new System.Drawing.Point(213, 414);
+            this.btnEliminarFisica.Location = new System.Drawing.Point(212, 407);
             this.btnEliminarFisica.Name = "btnEliminarFisica";
             this.btnEliminarFisica.Size = new System.Drawing.Size(75, 23);
             this.btnEliminarFisica.TabIndex = 4;
@@ -93,7 +98,7 @@
             // 
             // btnAtras
             // 
-            this.btnAtras.Location = new System.Drawing.Point(306, 414);
+            this.btnAtras.Location = new System.Drawing.Point(305, 407);
             this.btnAtras.Name = "btnAtras";
             this.btnAtras.Size = new System.Drawing.Size(75, 23);
             this.btnAtras.TabIndex = 5;
@@ -101,12 +106,51 @@
             this.btnAtras.UseVisualStyleBackColor = true;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
+            // lblFiltroRapido
+            // 
+            this.lblFiltroRapido.AutoSize = true;
+            this.lblFiltroRapido.Location = new System.Drawing.Point(410, 40);
+            this.lblFiltroRapido.Name = "lblFiltroRapido";
+            this.lblFiltroRapido.Size = new System.Drawing.Size(64, 13);
+            this.lblFiltroRapido.TabIndex = 6;
+            this.lblFiltroRapido.Text = "Filtro rapido:";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(662, 62);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(210, 330);
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
+            // txtFiltroRapido
+            // 
+            this.txtFiltroRapido.Location = new System.Drawing.Point(480, 36);
+            this.txtFiltroRapido.Name = "txtFiltroRapido";
+            this.txtFiltroRapido.Size = new System.Drawing.Size(144, 20);
+            this.txtFiltroRapido.TabIndex = 8;
+            this.txtFiltroRapido.TextChanged += new System.EventHandler(this.txtFiltroRapido_TextChanged);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Location = new System.Drawing.Point(30, 407);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.TabIndex = 9;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
             // ListadoArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(1275, 653);
+            this.ClientSize = new System.Drawing.Size(918, 629);
+            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.txtFiltroRapido);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.lblFiltroRapido);
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.btnEliminarFisica);
             this.Controls.Add(this.btnModificar);
@@ -119,6 +163,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ListadoArticulos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dvgArticulos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -132,5 +177,9 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnEliminarFisica;
         private System.Windows.Forms.Button btnAtras;
+        private System.Windows.Forms.Label lblFiltroRapido;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox txtFiltroRapido;
+        private System.Windows.Forms.Button btnAgregar;
     }
 }
