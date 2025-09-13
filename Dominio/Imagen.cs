@@ -8,8 +8,8 @@ namespace Dominio
 {
     public class Imagen
     {
-        public string UrlImagen { get; set; }
         public int idArticulo { get; set; }
+        public string UrlImagen { get; set; }
 
     }
 }

@@ -52,8 +52,7 @@
             this.dvgArticulos.Name = "dvgArticulos";
             this.dvgArticulos.Size = new System.Drawing.Size(594, 330);
             this.dvgArticulos.TabIndex = 0;
-  
-            this.dvgArticulos.SelectionChanged += new System.EventHandler(this.btnActualizar_Click);
+            this.dvgArticulos.SelectionChanged += new System.EventHandler(this.dvgArticulos_SelectionChanged);
             // 
             // textTituloArticulos
             // 

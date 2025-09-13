@@ -23,7 +23,7 @@ namespace Negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database = CATALOGO_P3_DB; integrated security=true ";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "SELECT A.Id, Codigo, Nombre, A.Descripcion, M.Descripcion Marca, C.Descripcion Categoria,A.IdMarca, A.IdCategoria, A.Id, Precio, I.ImagenUrl FROM Articulos A, Marcas M, Categorias C, Imagenes I WHERE M.Id = A.IdMarca AND C.Id = A.IdCategoria AND I.IdArticulo = I.Id";//"Select A.Id, Codigo, Nombre, A.Descripcion,M.Descripcion Marca,C.Descripcion Categoria,A.IdMarca,A.IdCategoria,A.Id, Precio From Articulos A, Marcas M, CATEGORIAS C where M.id = A.idMarca and C.id = A.idCategoria";
+                comando.CommandText = "\r\nSELECT \r\n    A.Id,\r\n    A.Codigo,\r\n    A.Nombre,\r\n    A.Descripcion,\r\n    M.Descripcion AS Marca,\r\n    C.Descripcion AS Categoria,\r\n    A.IdMarca,\r\n    A.IdCategoria,\r\n    A.Precio,\r\n    I.ImagenUrl\r\nFROM \r\n    Articulos A\r\nINNER JOIN Marcas M ON M.Id = A.IdMarca\r\nINNER JOIN Categorias C ON C.Id = A.IdCategoria\r\nLEFT JOIN Imagenes I ON I.IdArticulo = A.Id";//"Select A.Id, Codigo, Nombre, A.Descripcion,M.Descripcion Marca,C.Descripcion Categoria,A.IdMarca,A.IdCategoria,A.Id, Precio From Articulos A, Marcas M, CATEGORIAS C where M.id = A.idMarca and C.id = A.idCategoria";
                 comando.Connection = conexion;
                 conexion.Open();
                 lector = comando.ExecuteReader();
@@ -54,7 +54,7 @@ namespace Negocio
                     if (!(lector["ImagenUrl"] is DBNull))
                         aux.Imagen.UrlImagen = (string)lector["ImagenUrl"];
                     else
-                        aux.Imagen = null;
+                        aux.Imagen.UrlImagen = "";
 
 
                     lista.Add(aux);

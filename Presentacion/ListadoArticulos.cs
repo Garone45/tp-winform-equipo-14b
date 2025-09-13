@@ -33,8 +33,11 @@ namespace Presentacion
             {
                 listaArticulos = negocio.listar();
                 dvgArticulos.DataSource = listaArticulos;
-                pbxArticulos.Load(listaArticulos[0].Imagen.UrlImagen);
-                
+                if (!string.IsNullOrEmpty(listaArticulos[0].Imagen?.UrlImagen))
+                {
+                    pbxArticulos.Load(listaArticulos[0].Imagen.UrlImagen);
+                }
+
             }
             catch (Exception ex)
             {
@@ -49,7 +52,10 @@ namespace Presentacion
             try
             {
                 listaArticulos = negocio.listar();
+                
                 dvgArticulos.DataSource = listaArticulos;
+                
+                
                 //dvgArticulos.Columns["ImagenUrl"].Visible = false;
             }
             catch (Exception ex)
@@ -127,10 +133,51 @@ namespace Presentacion
             ventana.ShowDialog();
         }
 
-       /* private void dvgArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e) // Va cambiando de foto
+        private void dvgArticulos_SelectionChanged(object sender, EventArgs e)
         {
-            Articulos seleccionado = (Articulos)dvgArticulos.CurrentRow.DataBoundItem;
-            pbxArticulos.Load(seleccionado.Imagen.UrlImagen);
-        }*/
+
+            if (dvgArticulos.CurrentRow == null) return;
+
+            Articulos seleccionado = dvgArticulos.CurrentRow.DataBoundItem as Articulos;
+            if (seleccionado == null) return;
+
+            string url = seleccionado.Imagen?.UrlImagen;
+            if (!string.IsNullOrEmpty(url))
+            {
+                try
+                {
+                    pbxArticulos.Load(url);
+                }
+                catch (System.Net.WebException)
+                {
+                    pbxArticulos.Image = null; // imagen por defecto si falla
+                }
+            }
+            else
+            {
+                pbxArticulos.Image = null; // imagen vacía si no hay URL
+            }
+            /*if (dvgArticulos.CurrentRow == null) return;
+
+            Articulos seleccionado = dvgArticulos.CurrentRow.DataBoundItem as Articulos;
+            if (seleccionado == null) return;
+
+            string url = seleccionado.Imagen?.UrlImagen;
+            if (!string.IsNullOrEmpty(url))
+            {
+                try
+                {
+                    pbxArticulos.Load(url);
+                }
+                catch (System.Net.WebException)
+                {
+                    pbxArticulos.Image = null; // limpia si URL falla
+                }
+            }
+            else
+            {
+                pbxArticulos.Image = null; // limpia si no hay URL
+            }*/
+        }
     }
 }
