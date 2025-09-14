@@ -72,6 +72,7 @@ namespace Presentacion
            
             AgregarArticulo ventanaModificar = new AgregarArticulo(seleccionado);
             ventanaModificar.ShowDialog();
+
         }
 
         private void Eliminar_Click(object sender, EventArgs e)

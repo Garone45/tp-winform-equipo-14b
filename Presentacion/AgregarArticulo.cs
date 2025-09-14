@@ -35,34 +35,36 @@ namespace Presentacion
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Articulos articulos = new Articulos();
+            //Articulos articulos = new Articulos();
             ArticulosNegocio negocio = new ArticulosNegocio();
             try
             {
-                if(articulo != null)
-                    articulos = new Articulos(); 
-                articulos.CodigoArticulo = txtCodigoArticulo.Text;              //capturamos lo que se agrega en el textBox 
-                articulos.Nombre = txtNombre.Text;
-                articulos.Descripcion = txtDescripcion.Text;
-                articulos.Marca =(Marcas) cboMarca.SelectedItem; //el selected item lo casteamos como marca
-                articulos.Categoria = (Categoria)cboCategoria.SelectedItem ; //el selected item lo casteamos como categoria
-
-                if(articulos.IDArticulo != 0)
+                if(articulo == null)
                 {
-                    articulos.IDArticulo = articulo.IDArticulo;
-                    negocio.modificar(articulos);
+                    articulo = new Articulos();
+                }
+                
+                articulo.CodigoArticulo = txtCodigoArticulo.Text;              //capturamos lo que se agrega en el textBox 
+                articulo.Nombre = txtNombre.Text;
+                articulo.Descripcion = txtDescripcion.Text;
+                articulo.Marca =(Marcas) cboMarca.SelectedItem; //el selected item lo casteamos como marca
+                articulo.Categoria = (Categoria)cboCategoria.SelectedItem ; //el selected item lo casteamos como categoria
+
+                if(articulo.IDArticulo != 0)
+                {
+                    //articulo.IDArticulo = articulo.IDArticulo;
+                    negocio.modificar(articulo);
                     MessageBox.Show("Modificado Correctamente");
-                    Close();
-                    return;
+                   
                 }
                 else
                 {
-                    negocio.agregar(articulos);
+                    negocio.agregar(articulo);
                     MessageBox.Show("Agregado Correctamente");
 
                 }
                 
-                
+               
                 Close();//volvemos a la ventana principal...
 
             }
@@ -89,6 +91,7 @@ namespace Presentacion
                 cboCategoria.DataSource = CategoriasNegocio.listar();
                 cboCategoria.ValueMember = "IdCategoria";
                 cboCategoria.DisplayMember = "Descripcion";
+                
                 if(articulo != null)
                 {
                     txtCodigoArticulo.Text = articulo.CodigoArticulo;

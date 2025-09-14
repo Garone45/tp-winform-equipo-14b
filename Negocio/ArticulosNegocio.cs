@@ -23,7 +23,7 @@ namespace Negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database = CATALOGO_P3_DB; integrated security=true ";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "\r\nSELECT \r\n    A.Id,\r\n    A.Codigo,\r\n    A.Nombre,\r\n    A.Descripcion,\r\n    M.Descripcion AS Marca,\r\n    C.Descripcion AS Categoria,\r\n    A.IdMarca,\r\n    A.IdCategoria,\r\n    A.Precio,\r\n    I.ImagenUrl\r\nFROM \r\n    Articulos A\r\nINNER JOIN Marcas M ON M.Id = A.IdMarca\r\nINNER JOIN Categorias C ON C.Id = A.IdCategoria\r\nLEFT JOIN Imagenes I ON I.IdArticulo = A.Id";//"Select A.Id, Codigo, Nombre, A.Descripcion,M.Descripcion Marca,C.Descripcion Categoria,A.IdMarca,A.IdCategoria,A.Id, Precio From Articulos A, Marcas M, CATEGORIAS C where M.id = A.idMarca and C.id = A.idCategoria";
+                comando.CommandText = "SELECT A.Id,A.Codigo,A.Nombre,A.Descripcion, ISNULL(M.Id, 0) AS IdMarca, ISNULL(C.Id, 0) AS IdCategoria,ISNULL(I.Id, 0) AS IdImagen, ISNULL(M.Descripcion, 'Sin marca') AS Marca, ISNULL(C.Descripcion, 'Sin categoría') AS Categoria, A.Precio, I.ImagenUrl FROM Articulos A LEFT JOIN Marcas M ON M.Id = A.IdMarca LEFT JOIN Categorias C ON C.Id = A.IdCategoria LEFT JOIN Imagenes I ON I.IdArticulo = A.Id;";//"Select A.Id, Codigo, Nombre, A.Descripcion,M.Descripcion Marca,C.Descripcion Categoria,A.IdMarca,A.IdCategoria,A.Id, Precio From Articulos A, Marcas M, CATEGORIAS C where M.id = A.idMarca and C.id = A.idCategoria";
                 comando.Connection = conexion;
                 conexion.Open();
                 lector = comando.ExecuteReader();
@@ -37,7 +37,7 @@ namespace Negocio
                     aux.Categoria = new Categoria();
                     aux.Categoria.IDCategoria = (int)lector["IdCategoria"];
 
-                    aux.IDArticulo = (int)lector["Id"];
+                    //aux.IDArticulo = (int)lector["Id"];
                     aux.Nombre = (string)lector["Nombre"];
                     aux.CodigoArticulo = (string)lector["Codigo"];
                     aux.Descripcion = (string)lector["Descripcion"];
@@ -102,18 +102,18 @@ namespace Negocio
             }
         }
            
-        public void modificar(Articulos articulos)
+        public void modificar(Articulos articulo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("update Articulos set Nombre = @nombre, Codigo = @codigo, Descripcion = @descripcion, IdMarca = @idTipo, IdCategoria = @idDebilidad where Id = @id");
-                datos.setearParametro("@nombre", articulos.Nombre);
-                datos.setearParametro("@codigo", articulos.CodigoArticulo);
-                datos.setearParametro("@descripcion", articulos.Descripcion);
-                datos.setearParametro("@idTipo", articulos.Marca.IDMarca);
-                datos.setearParametro("@idDebilidad", articulos.Categoria.IDCategoria);
-                datos.setearParametro("@id", articulos.IDArticulo);
+                datos.setearConsulta("update ARTICULOS set Nombre = @nombre, Codigo = @codigo, Descripcion = @descripcion, IdMarca = @idMarca, IdCategoria = @idCategoria where Id = @id");
+                datos.setearParametro("@nombre", articulo.Nombre);
+                datos.setearParametro("@codigo", articulo.CodigoArticulo);
+                datos.setearParametro("@descripcion", articulo.Descripcion);
+                datos.setearParametro("@idMarca", articulo.Marca.IDMarca);
+                datos.setearParametro("@idCategoria", articulo.Categoria.IDCategoria);
+                datos.setearParametro("@id", articulo.IDArticulo);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
