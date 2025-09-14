@@ -62,20 +62,5 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-        public void eliminar(string Descripcion)
-        {
-            AccesoDatos datos = new AccesoDatos();
-            try
-            {
-                datos.setearConsulta("delete from Categorias where Descripcion = @Descripcion");
-                datos.setearParametro("@Descripcion",Descripcion);
-                datos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-        }
     }
 }

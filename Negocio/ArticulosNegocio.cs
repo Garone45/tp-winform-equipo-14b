@@ -147,8 +147,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string consulta = "Select A.Id, Codigo, Nombre, A.Descripcion,M.Descripcion Marca,C.Descripcion Categoria,A.IdMarca,A.IdCategoria,A.Id, Precio From Articulos A, Marcas M, CATEGORIAS C where M.id = A.idMarca and C.id = A.idCategoria and  ";
-                //"SELECT A.Id,A.Codigo,A.Nombre,A.Descripcion, ISNULL(M.Id, 0) AS IdMarca, ISNULL(C.Id, 0) AS IdCategoria,ISNULL(I.Id, 0) AS IdImagen, ISNULL(M.Descripcion, 'Sin marca') AS Marca, ISNULL(C.Descripcion, 'Sin categoría') AS Categoria, A.Precio, I.ImagenUrl FROM Articulos A LEFT JOIN Marcas M ON M.Id = A.IdMarca LEFT JOIN Categorias C ON C.Id = A.IdCategoria LEFT JOIN Imagenes I ON I.IdArticulo = A.Id; ";
+                string consulta = "Select A.Id, Codigo, Nombre, A.Descripcion,M.Descripcion Marca,C.Descripcion Categoria,A.IdMarca,A.IdCategoria,A.Id, Precio From Articulos A, Marcas M, CATEGORIAS C where M.id = A.idMarca and C.id = A.idCategoria and ";
                 //el campo es el primer parametro que recibimos
                 switch (campo)
                 {
@@ -170,13 +169,13 @@ namespace Negocio
                         switch (criterio)
                         {
                             case "Mayor a":
-                                consulta += "A.Precio > " + filtro;
+                                consulta += "A.Precio like '" + filtro + "%'"; //el % es para que busque todo lo que comience con lo que escribamos en el textBox
                                 break;
                             case "Menor a":
-                                consulta += "A.Precio < " + filtro;
+                                consulta += "A.Precio like '%" + filtro + "'";
                                 break;
                             case "Igual a":
-                                consulta += "A.Precio = " + filtro ;
+                                consulta += "A.Precio like '%" + filtro + "%'";
                                 break;
                         }
                         break;
@@ -224,6 +223,9 @@ namespace Negocio
             catch (Exception ex)
             {
                 throw ex;
+
+
+
             }
         }
     }
