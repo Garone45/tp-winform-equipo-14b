@@ -73,7 +73,6 @@ namespace Negocio
         public void agregar(Articulos articulos)
         {
             AccesoDatos datos = new AccesoDatos();
-
             try
             {
                 ///revisar

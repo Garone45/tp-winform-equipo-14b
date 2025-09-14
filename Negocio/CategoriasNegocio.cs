@@ -17,7 +17,6 @@ namespace Negocio
 
             try 
             {
-
                 datos.setearConsulta("select id, Descripcion from CATEGORIAS");// Lo mismo que en articuloNegocio pero trabajado con la clase AccesoDatos.
                 datos.ejecutarLectura();
 
@@ -30,7 +29,7 @@ namespace Negocio
                     lista.Add(aux);
                 }
                 return lista;
-                  
+         
             }
 
             catch (Exception ex) 
@@ -42,10 +41,26 @@ namespace Negocio
                 datos.cerrarConexion();
 
             }
+        }
 
+        public void agregar(Categoria categoria)
+        {
+               AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO Categorias (Descripcion) values (@Descripcion)");
+                datos.setearParametro("@Descripcion", categoria.Descripcion);
+                datos.ejecutarAccion();
 
-
-
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
     }
 }
