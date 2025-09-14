@@ -33,10 +33,10 @@ namespace Presentacion
             {
                 listaArticulos = negocio.listar();
                 dvgArticulos.DataSource = listaArticulos;
-                if (!string.IsNullOrEmpty(listaArticulos[0].Imagen?.UrlImagen))
+               /* if (!string.IsNullOrEmpty(listaArticulos[0].Imagen?.UrlImagen))
                 {
                     pbxArticulos.Load(listaArticulos[0].Imagen.UrlImagen);
-                }
+                }*/
 
             }
             catch (Exception ex)

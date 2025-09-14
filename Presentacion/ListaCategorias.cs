@@ -50,5 +50,35 @@ namespace Presentacion
         {
             Close();
         }
+
+        private void dvgListaCategoria_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dvgListaCategoria.CurrentRow == null) return;
+
+            Categoria seleccionado = dvgListaCategoria.CurrentRow.DataBoundItem as Categoria;
+            if (seleccionado == null) return;
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            CategoriasNegocio negocio = new CategoriasNegocio();
+            Categoria seleccionado;
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("Desea eliminar esta categoria?", "Eliminando..", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Categoria)dvgListaCategoria.CurrentRow.DataBoundItem;
+                    negocio.eliminar(seleccionado.Descripcion);
+                    MessageBox.Show("Eliminado Correctamente...");
+                    dvgListaCategoria.DataSource = negocio.listar();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
     }
 }

@@ -33,6 +33,7 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtNombreCategoria = new System.Windows.Forms.TextBox();
             this.btnAtras = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dvgListaCategoria)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,6 +44,7 @@
             this.dvgListaCategoria.Name = "dvgListaCategoria";
             this.dvgListaCategoria.Size = new System.Drawing.Size(360, 150);
             this.dvgListaCategoria.TabIndex = 0;
+            this.dvgListaCategoria.SelectionChanged += new System.EventHandler(this.dvgListaCategoria_SelectionChanged);
             // 
             // btnAgregarCategoria
             // 
@@ -72,7 +74,7 @@
             // 
             // btnAtras
             // 
-            this.btnAtras.Location = new System.Drawing.Point(306, 220);
+            this.btnAtras.Location = new System.Drawing.Point(306, 249);
             this.btnAtras.Name = "btnAtras";
             this.btnAtras.Size = new System.Drawing.Size(75, 23);
             this.btnAtras.TabIndex = 4;
@@ -80,11 +82,22 @@
             this.btnAtras.UseVisualStyleBackColor = true;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(306, 220);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.TabIndex = 5;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // ListaCategorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(609, 450);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.txtNombreCategoria);
             this.Controls.Add(this.lblNombre);
@@ -106,5 +119,6 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.TextBox txtNombreCategoria;
         private System.Windows.Forms.Button btnAtras;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }
