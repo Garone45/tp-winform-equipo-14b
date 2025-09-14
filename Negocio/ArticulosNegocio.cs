@@ -41,14 +41,14 @@ namespace Negocio
                     aux.Nombre = (string)lector["Nombre"];
                     aux.CodigoArticulo = (string)lector["Codigo"];
                     aux.Descripcion = (string)lector["Descripcion"];
-                   // aux.UrlImagen = (string)lector["ImagenUrl"];
+                    // aux.UrlImagen = (string)lector["ImagenUrl"];
 
                     if (!(lector["Marca"] is DBNull))
-                    aux.Marca.Descripcion = (string)lector ["Marca"];
+                        aux.Marca.Descripcion = (string)lector["Marca"];
                     if (!(lector["Categoria"] is DBNull))
-                    aux.Categoria.Descripcion = (string)lector["Categoria"];
+                        aux.Categoria.Descripcion = (string)lector["Categoria"];
                     if (!(lector["Precio"] is DBNull))
-                    aux.Precio = Convert.ToDecimal(lector["Precio"]);
+                        aux.Precio = Convert.ToDecimal(lector["Precio"]);
 
                     aux.Imagen = new Imagen();
                     if (!(lector["ImagenUrl"] is DBNull))
@@ -100,7 +100,7 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-           
+
         public void modificar(Articulos articulo)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -125,7 +125,7 @@ namespace Negocio
             }
         }
 
-        public void eliminar (int id)
+        public void eliminar(int id)
         {
             try
             {
@@ -141,5 +141,92 @@ namespace Negocio
             }
         }
 
+        public List<Articulos> filtrar(string campo, string criterio, string filtro)
+        {
+            List<Articulos> lista = new List<Articulos>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = "Select A.Id, Codigo, Nombre, A.Descripcion,M.Descripcion Marca,C.Descripcion Categoria,A.IdMarca,A.IdCategoria,A.Id, Precio From Articulos A, Marcas M, CATEGORIAS C where M.id = A.idMarca and C.id = A.idCategoria and ";
+                //el campo es el primer parametro que recibimos
+                switch (campo)
+                {
+                    case "Nombre":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "A.Nombre like '" + filtro + "%'"; //el % es para que busque todo lo que comience con lo que escribamos en el textBox
+                                break;
+                            case "Termina con":
+                                consulta += "A.Nombre like '%" + filtro + "'";
+                                break;
+                            case "Contiene":
+                                consulta += "A.Nombre like '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+                    case "Precio":
+                        switch (criterio)
+                        {
+                            case "Mayor a":
+                                consulta += "A.Precio like '" + filtro + "%'"; //el % es para que busque todo lo que comience con lo que escribamos en el textBox
+                                break;
+                            case "Menor a":
+                                consulta += "A.Precio like '%" + filtro + "'";
+                                break;
+                            case "Igual a":
+                                consulta += "A.Precio like '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+                    case "Descripcion":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "A.Descripcion like '" + filtro + "%'"; //el % es para que busque todo lo que comience con lo que escribamos en el textBox
+                                break;
+                            case "Termina con":
+                                consulta += "A.Descripcion like '%" + filtro + "'";
+                                break;
+                            case "Contiene":
+                                consulta += "A.Descripcion like '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+                }
+                datos.setearConsulta(consulta);
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Articulos aux = new Articulos();
+                    aux.IDArticulo = (int)datos.Lector["Id"];
+                    aux.Marca = new Marcas();
+                    aux.Marca.IDMarca = (int)datos.Lector["IdMarca"];
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.IDCategoria = (int)datos.Lector["IdCategoria"];
+                    //aux.IDArticulo = (int)lector["Id"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.CodigoArticulo = (string)datos.Lector["Codigo"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    // aux.UrlImagen = (string)lector["ImagenUrl"];
+                    if (!(datos.Lector["Marca"] is DBNull))
+                        aux.Marca.Descripcion = (string)datos.Lector["Marca"];
+                    if (!(datos.Lector["Categoria"] is DBNull))
+                        aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
+                    if (!(datos.Lector["Precio"] is DBNull))
+                        aux.Precio = Convert.ToDecimal(datos.Lector["Precio"]);
+
+                    lista.Add(aux);
+                }
+                    return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+
+
+            }
+        }
     }
 }

@@ -36,7 +36,13 @@ namespace Presentacion
                /* if (!string.IsNullOrEmpty(listaArticulos[0].Imagen?.UrlImagen))
                 {
                     pbxArticulos.Load(listaArticulos[0].Imagen.UrlImagen);
+<<<<<<< HEAD
                 }*/
+=======
+                }
+                dvgArticulos.Columns["Imagen"].Visible = false;
+                dvgArticulos.Columns["IdArticulo"].Visible = false;
+>>>>>>> e9c51440bc22b0196917d2c8b1c66ee8a949b7b4
 
             }
             catch (Exception ex)
@@ -44,6 +50,9 @@ namespace Presentacion
                 MessageBox.Show(ex.ToString());
             }
 
+            cboCampo.Items.Add("Nombre");
+            cboCampo.Items.Add("Descripcion");
+            cboCampo.Items.Add("Precio");
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -179,6 +188,44 @@ namespace Presentacion
             {
                 pbxArticulos.Image = null; // limpia si no hay URL
             }*/
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cboCampo.SelectedItem.ToString();
+            if(opcion == "Descripcion" || opcion == "Nombre")
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Comienza con");
+                cboCriterio.Items.Add("Termina con");
+                cboCriterio.Items.Add("Contiene");
+            }
+            else if(opcion == "Precio")
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Mayor a");
+                cboCriterio.Items.Add("Menor a ");
+                cboCriterio.Items.Add("Igual a");
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            ArticulosNegocio negocio = new ArticulosNegocio();
+            try
+            {
+                string campo = cboCampo.SelectedItem?.ToString();
+                string criterio = cboCriterio.SelectedItem?.ToString();
+                string filtro = txtFiltroAvanzado.Text;
+                dvgArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
     }
 }
