@@ -36,14 +36,10 @@ namespace Presentacion
                /* if (!string.IsNullOrEmpty(listaArticulos[0].Imagen?.UrlImagen))
                 {
                     pbxArticulos.Load(listaArticulos[0].Imagen.UrlImagen);
-<<<<<<< HEAD
+
                 }*/
-=======
-                }
                 dvgArticulos.Columns["Imagen"].Visible = false;
                 dvgArticulos.Columns["IdArticulo"].Visible = false;
->>>>>>> e9c51440bc22b0196917d2c8b1c66ee8a949b7b4
-
             }
             catch (Exception ex)
             {
@@ -130,9 +126,6 @@ namespace Presentacion
             {
                 listaFiltrada = listaArticulos;
             }
-
-            
-
             dvgArticulos.DataSource = null;
             dvgArticulos.DataSource = listaFiltrada;
         }
@@ -208,12 +201,56 @@ namespace Presentacion
                 cboCriterio.Items.Add("Igual a");
             }
         }
+        private bool validarFiltro()
+        {
+            if(cboCampo.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione el campo para buscar");
+                return true;
+            }
+            if (cboCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Seleccione Criterio por favor");
+                return true;
+            }
+            
+            if(cboCampo.SelectedIndex.ToString() == "Precio") // si lo que cargue en el campo es precio, que me valide si realmente hay un numero.
+            {
+               if(string.IsNullOrEmpty(txtFiltroAvanzado.Text))
+                {
+                    MessageBox.Show("Hay que cargar el filtro para buscar ");
+                    return true;
+                }
+               if (!(soloNumeros(txtFiltroAvanzado.Text)))
+                {
+                    MessageBox.Show("Solo numeros para poder buscar ");
+                    return true;
+                }
+
+            }
+            return false;
+        }
+
+        private bool soloNumeros(string cadena)
+        {
+            foreach (char caractec in cadena)
+            {
+                if (!(char.IsNumber (caractec)))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             ArticulosNegocio negocio = new ArticulosNegocio();
             try
             {
+                if (validarFiltro()) /// cancela el evento si es false;
+                    return;
+
                 string campo = cboCampo.SelectedItem?.ToString();
                 string criterio = cboCriterio.SelectedItem?.ToString();
                 string filtro = txtFiltroAvanzado.Text;
