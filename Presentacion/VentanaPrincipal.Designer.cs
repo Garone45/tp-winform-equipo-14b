@@ -65,14 +65,14 @@
             // listadoDeArticulosToolStripMenuItem
             // 
             this.listadoDeArticulosToolStripMenuItem.Name = "listadoDeArticulosToolStripMenuItem";
-            this.listadoDeArticulosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listadoDeArticulosToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.listadoDeArticulosToolStripMenuItem.Text = "Listado de Articulos";
             this.listadoDeArticulosToolStripMenuItem.Click += new System.EventHandler(this.listadoDeArticulosToolStripMenuItem_Click);
             // 
             // agregarToolStripMenuItem
             // 
             this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.agregarToolStripMenuItem.Text = "Agregar ";
             this.agregarToolStripMenuItem.Click += new System.EventHandler(this.agregarToolStripMenuItem_Click);
             // 
@@ -112,6 +112,7 @@
             this.agregarToolStripMenuItem2.Name = "agregarToolStripMenuItem2";
             this.agregarToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.agregarToolStripMenuItem2.Text = "Ver Categorias";
+            this.agregarToolStripMenuItem2.Click += new System.EventHandler(this.agregarToolStripMenuItem2_Click);
             // 
             // modificarToolStripMenuItem2
             // 

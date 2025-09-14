@@ -66,7 +66,6 @@ namespace Presentacion
                 
                
                 Close();//volvemos a la ventana principal...
-
             }
             catch (Exception ex)
             {
@@ -74,8 +73,6 @@ namespace Presentacion
 
 
             }
-
-
 
         }
 

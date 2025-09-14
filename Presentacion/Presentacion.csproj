@@ -52,6 +52,12 @@
     <Compile Include="AgregarArticulo.Designer.cs">
       <DependentUpon>AgregarArticulo.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListaCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListaCategorias.Designer.cs">
+      <DependentUpon>ListaCategorias.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListadoMarcas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AgregarArticulo.resx">
       <DependentUpon>AgregarArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListaCategorias.resx">
+      <DependentUpon>ListaCategorias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoMarcas.resx">
       <DependentUpon>ListadoMarcas.cs</DependentUpon>
