@@ -16,7 +16,7 @@ namespace Presentacion
 {
     public partial class AgregarArticulo : Form
     {
-        private Articulos articulo = null; 
+        private Articulos articulo = null;
         public AgregarArticulo()
         {
             InitializeComponent();
@@ -39,23 +39,27 @@ namespace Presentacion
             ArticulosNegocio negocio = new ArticulosNegocio();
             try
             {
-                if(articulo == null)
+                if (validar())
+                    return;
+
+
+                if (articulo == null)
                 {
                     articulo = new Articulos();
                 }
-                
+
                 articulo.CodigoArticulo = txtCodigoArticulo.Text;              //capturamos lo que se agrega en el textBox 
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;
-                articulo.Marca =(Marcas) cboMarca.SelectedItem; //el selected item lo casteamos como marca
-                articulo.Categoria = (Categoria)cboCategoria.SelectedItem ; //el selected item lo casteamos como categoria
+                articulo.Marca = (Marcas)cboMarca.SelectedItem; //el selected item lo casteamos como marca
+                articulo.Categoria = (Categoria)cboCategoria.SelectedItem; //el selected item lo casteamos como categoria
 
-                if(articulo.IDArticulo != 0)
+                if (articulo.IDArticulo != 0)
                 {
                     //articulo.IDArticulo = articulo.IDArticulo;
                     negocio.modificar(articulo);
                     MessageBox.Show("Modificado Correctamente");
-                   
+
                 }
                 else
                 {
@@ -63,15 +67,13 @@ namespace Presentacion
                     MessageBox.Show("Agregado Correctamente");
 
                 }
-                
-               
+
+
                 Close();//volvemos a la ventana principal...
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-
-
             }
 
         }
@@ -88,8 +90,8 @@ namespace Presentacion
                 cboCategoria.DataSource = CategoriasNegocio.listar();
                 cboCategoria.ValueMember = "IdCategoria";
                 cboCategoria.DisplayMember = "Descripcion";
-                
-                if(articulo != null)
+
+                if (articulo != null)
                 {
                     txtCodigoArticulo.Text = articulo.CodigoArticulo;
                     txtNombre.Text = articulo.Nombre;
@@ -104,6 +106,25 @@ namespace Presentacion
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+        public bool validar()
+        {
+            if (txtNombre.Text.Length == 0)
+            {
+                MessageBox.Show("Por favor ingrese un nombre ");
+                return true;
+            }
+            if (txtCodigoArticulo.Text.Length == 0)
+            {
+                MessageBox.Show("Por favor ingrese un codigo");
+                return true;
+            }
+            if (txtDescripcion.Text.Length == 0)
+            {
+                MessageBox.Show("Por favor ingrese una descripcion");
+                return true;
+            }
+            return false;
         }
     }
 }

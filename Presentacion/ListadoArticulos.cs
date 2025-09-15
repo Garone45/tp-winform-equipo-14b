@@ -210,6 +210,10 @@ namespace Presentacion
             ArticulosNegocio negocio = new ArticulosNegocio();
             try
             {
+
+                if (validarBusqueda())
+                    return;
+
                 string campo = cboCampo.SelectedItem?.ToString();
                 string criterio = cboCriterio.SelectedItem?.ToString();
                 string filtro = txtFiltroAvanzado.Text;
@@ -218,10 +222,48 @@ namespace Presentacion
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
 
+        }
+        private bool validarBusqueda()
+        {
+            if(cboCampo.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione campo a buscar ");
+                return true;
+            }
+            if(cboCriterio.SelectedIndex == -1)
+            {
+                MessageBox.Show("Por favor, seleccione criterio a buscar ");
+            }
+            if(cboCampo.SelectedItem.ToString() == "Precio")
+            {
+                if(string.IsNullOrEmpty(txtFiltroAvanzado.Text)) // no puede estar vacio.
+                {
+                    MessageBox.Show("Por favor, ingrese un numero");
+                }
+                if (!(validarNumeros(txtFiltroAvanzado.Text))) /// no puede ser texto.
+                {
+                    MessageBox.Show("Por favor, ingrese un numero");
+                    return true;
+                }
+            }
+            
+            return false;
+
+        }
+
+        private bool validarNumeros(string cadena)
+        {
+            foreach(char caractecer in cadena)
+            {
+                if(!(char.IsNumber(caractecer)))// si no es numero. 
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

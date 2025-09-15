@@ -169,13 +169,13 @@ namespace Negocio
                         switch (criterio)
                         {
                             case "Mayor a":
-                                consulta += "A.Precio like '" + filtro + "%'"; //el % es para que busque todo lo que comience con lo que escribamos en el textBox
+                                consulta += "A.Precio > " + filtro;
                                 break;
                             case "Menor a":
-                                consulta += "A.Precio like '%" + filtro + "'";
+                                consulta += "A.Precio < "+ filtro;
                                 break;
                             case "Igual a":
-                                consulta += "A.Precio like '%" + filtro + "%'";
+                                consulta += "A.Precio = " + filtro ;
                                 break;
                         }
                         break;
@@ -223,8 +223,6 @@ namespace Negocio
             catch (Exception ex)
             {
                 throw ex;
-
-
 
             }
         }
