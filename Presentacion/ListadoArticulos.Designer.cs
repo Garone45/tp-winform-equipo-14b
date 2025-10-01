@@ -131,6 +131,7 @@
             this.pbxArticulos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxArticulos.TabIndex = 7;
             this.pbxArticulos.TabStop = false;
+            this.pbxArticulos.Click += new System.EventHandler(this.pbxArticulos_Click);
             // 
             // txtFiltroRapido
             // 

@@ -37,7 +37,6 @@ namespace Negocio
             {
                 conexion.Open();
                 lector=comando.ExecuteReader();
-
             }
             catch (Exception ex) 
             {
@@ -63,7 +62,6 @@ namespace Negocio
             comando.Parameters.AddWithValue(nombre, valor);
         }
 
-
         public void cerrarConexion()
         {
             if(lector!=null) 
@@ -71,8 +69,6 @@ namespace Negocio
             //lector.Close();
            
         }
-
-
 
     }
 }

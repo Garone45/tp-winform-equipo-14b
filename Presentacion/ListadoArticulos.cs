@@ -265,5 +265,10 @@ namespace Presentacion
             }
             return true;
         }
+
+        private void pbxArticulos_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
